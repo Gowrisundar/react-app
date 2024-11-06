@@ -8,6 +8,9 @@ import DataFlow from './learning/statemngt/DataFlow';
 import CompLifeCycle from './learning/lifecycle/CompLifeCycle';
 import Button from './learning/hooks/Button';
 import DataLoader from './learning/hooks/DataLoader';
+import Cart from './shopping/Cart';
+import TestFetch from './learning/hooks/TestFetch';
+import SpaApp from './spa/SpaApp';
 
 function App() {
   let company = "Bank of america"
@@ -35,11 +38,14 @@ function App() {
 
       {/* <Button/> */}
 
-      <DataLoader/>
+      {/* <DataLoader/> */}
 
       {/* <StatefulApp/>
       <TextInput/> */}
       {/* <Footer/> */}
+      {/* <TestFetch /> */}
+      {/* <Cart/> */}
+      <SpaApp/>
     </div>
   );
 }
