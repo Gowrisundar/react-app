@@ -44,8 +44,8 @@ function App() {
       <TextInput/> */}
       {/* <Footer/> */}
       {/* <TestFetch /> */}
-      {/* <Cart/> */}
-      <SpaApp/>
+      <Cart/>
+      {/* <SpaApp/> */}
     </div>
   );
 }

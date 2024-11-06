@@ -2,54 +2,88 @@ import React, { Component } from 'react'
 
 export default class Cart extends Component {
     state = {item: []}
-    
+    inputText=''
     
     handleAddCart(item) {
         var newArray = this.state.item.slice();    
-        newArray.push(item);   
+        newArray.push(this.inputText);   
         this.setState({item:newArray})
+    }
+
+    handleRemoveCart(item) {
+      var newArray = this.state.item.slice();    
+      newArray.pop(this.inputText);   
+      this.setState({item:newArray})
     }
 
     captureText(event) {
         this.inputText = event.target.value
+    }
+
+    captureRemoveText(event) {
+      this.inputText = event.target.value
     }
   render() {
     return (
       <div>
         <AddCart addCartProps={(event) => {this.handleAddCart(event)}} captureText={(event) => this.captureText(event)}></AddCart>
         {/* <Display inputProps={this.inputText}></Display> */}
-        <RemoveCart itemProps = {this.state} />
+        <ShowCart itemProps = {this.state.item} />
+        <RemoveFromCart removeCartProps={(event) => {this.handleRemoveCart(event)}} removeText={(event)=>{this.captureRemoveText(event)}}></RemoveFromCart>
       </div>
     )
   }
 }
 
-export class RemoveCart extends Component {
-    state = {item: []}
+// export class RemoveCart extends Component {
+   
     
     
-    static getDerivedStateFromProps(props, state) {
-        if (props.itemProps !== state.item) {
-            this.setState({item: props.item})
-        }
-        return null
-    }
-  render() {
-    return (
-      <div>
+    
+//   render() {
+//     return (
+//       <div>
+//          <table className="table table-hover table-striped">
+//         <tbody>
+//             {
+//                 this.state.item.map((item) => {
+//                     return <TableRow dataProps={item}></TableRow>
+//                 })
+//             }
+//         </tbody>
+//       </table>
+//       </div>
+//     )
+//   }
+// }
+
+
+export const ShowCart = (props) => {
+  return (
+    <div>
          <table className="table table-hover table-striped">
         <tbody>
             {
-                this.state.item.map((item) => {
+                props.itemProps.map((item) => {
                     return <TableRow dataProps={item}></TableRow>
                 })
             }
         </tbody>
       </table>
       </div>
-    )
-  }
+  )
 }
+
+export const RemoveFromCart = (props) => {
+  return (
+    <div>
+        Enter Item remove: <input  type="text" onChange={props.removeText}></input>
+        <button className="bg-info" onClick={props.removeCartProps}>Enter</button>
+    </div>
+  )
+}
+
+
 
 
 export const AddCart = (props) => {
