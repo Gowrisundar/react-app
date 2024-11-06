@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Outlet, useNavigate } from 'react-router-dom'
 
 export const HomeButton = () => {
     let navigate = useNavigate()
@@ -12,8 +12,6 @@ export const HomeButton = () => {
     <div>
         <button className="btn btn-warning" onClick={handleClick}>GoTo HomePage
         </button>
-
-
     </div>
   )
 }
