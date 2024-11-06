@@ -11,9 +11,13 @@ export default class Cart extends Component {
     }
 
     handleRemoveCart(item) {
-      var newArray = this.state.item.slice();    
-      newArray.pop(this.inputText);   
-      this.setState({item:newArray})
+      var newArray = this.state.item.slice();
+      var index=newArray.indexOf(this.inputText) 
+      if(index !== -1) {
+        newArray.splice(index,1)
+        this.setState({item:newArray})
+      }
+      
     }
 
     captureText(event) {
@@ -106,7 +110,7 @@ export const Display = (props) => {
   export const TableRow = (props) => {
     return (
           <tr>
-              <td>{props.dataProps}</td>
+              <td id={props.dataProps}>{props.dataProps}</td>
           </tr>
     )
   }
